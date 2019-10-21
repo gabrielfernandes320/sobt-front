@@ -1,23 +1,27 @@
-<div ng-controller="sobtController">
+<div class="jumbotron" ng-controller="sobtController">
+    <h3>Novo cliente</h3>
 <form name="customerForm">
             <input class="form-control" type="text" ng-model="customer.name" placeholder="Nome" name="name" ng-required="true">
             <input class="form-control" type="text" ng-model="customer.adress" placeholder="Endereço" name="adress" ng-required="true">
             <input class="form-control" type="text" ng-model="customer.phone" placeholder="Telefone" name="phone" ng-required="true">
-            <input class="form-control" type="text" ng-model="customer.email" placeholder="Email" name="email" ng-required="true">
-
+            <input class="form-control" type="email" ng-model="customer.email" placeholder="Email" name="email" ng-required="true">
             
         </form>
         <div ng-show="customerForm.name.$error.required && customerForm.name.$dirty" class="alert alert-danger">
             Por favor, preecha o nome!
         </div>
         <div ng-show="customerForm.adress.$error.required && customerForm.adress.$dirty" class="alert alert-danger">
-            Por favor, preecha o telefone!
+            Por favor, preecha o endereço!
         </div> 
         <div ng-show="customerForm.phone.$error.required && customerForm.phone.$dirty" class="alert alert-danger">
-            Por favor, preecha a operadora!
+            Por favor, preecha o telefone!
         </div>
         <div ng-show="customerForm.email.$error.required && customerForm.email.$dirty" class="alert alert-danger">
-                Por favor, preecha a operadora!
+                Por favor, preecha o email!
+            </div>
+            <div ng-show="customerForm.email.$invalid && customerForm.email.$dirty" class="alert alert-danger">
+                Por favor, preencha o email no formato correto!
             </div>
         <button class="btn btn-primary btn-block" ng-click="addCustomer(customer)" ng-disabled="customerForm.$invalid">Adicionar cliente</button>
     </div>
+</div>

@@ -1,31 +1,82 @@
-<div ng-controller="sobtController">
-        <form name="serviceOrderForm">
-                    <input class="form-control" type="text" ng-model="serviceOrder.itemName" placeholder="Nome do item" name="itemName" ng-required="true">
-                    <input class="form-control" type="text" ng-model="serviceOrder.itemProblem" placeholder="Defeito do item" name="itemProblem" ng-required="true">
-                    <select class="form-control" ng-model="serviceOrder.orderStatus.id" ng-options="orderStatus.id as orderStatus.description for orderStatus in orderStatus" name="orderStatus" ng-required="true">
-                            <option value="">Selecione o estado da ordem</option>
-                    </select>
-                    <select class="form-control" ng-model="serviceOrder.itemType.id" ng-options="itemType.id as itemType.description for itemType in itemTypes" name="itemType" ng-required="true">
-                            <option value="">Selecione o tipo de item</option>
-                    </select>
-                    <select class="form-control" ng-model="serviceOrder.customer.id" ng-options="customer.id as customer.name for customer in customers" name="customer" ng-required="true">
-                            <option value="">Selecione o cliente</option>
-                    </select>
-        
-                    {{serviceOrder}}
-                </form>
-                <div ng-show="serviceOrderForm.name.$error.required && customerForm.name.$dirty" class="alert alert-danger">
-                    Por favor, preecha o nome!
-                </div>
-                <div ng-show="serviceOrderForm.adress.$error.required && customerForm.adress.$dirty" class="alert alert-danger">
-                    Por favor, preecha o telefone!
-                </div> 
-                <div ng-show="serviceOrderForm.phone.$error.required && customerForm.phone.$dirty" class="alert alert-danger">
-                    Por favor, preecha a operadora!
-                </div>
-                <div ng-show="serviceOrderForm.email.$error.required && customerForm.email.$dirty" class="alert alert-danger">
-                        Por favor, preecha a operadora!
-                    </div>
-                    {{serviceOrder}}
-                <button class="btn btn-primary btn-block" ng-click="addServiceOrder(serviceOrder)" ng-disabled="customerForm.$invalid">Criar nova orderm</button>
-            </div>
+<div class="jumbotron" ng-controller="sobtController">
+  <h3>Nova ordem de serviço</h3>
+  <form name="serviceOrderForm">
+    <input
+      class="form-control"
+      type="text"
+      ng-model="serviceOrder.itemName"
+      placeholder="Nome do item"
+      name="itemName"
+      ng-required="true"
+    />
+    <input
+      class="form-control"
+      type="text"
+      ng-model="serviceOrder.itemProblem"
+      placeholder="Defeito do item"
+      name="itemProblem"
+      ng-required="true"
+    />
+    <select
+      class="form-control"
+      ng-model="serviceOrder.orderStatus.id"
+      ng-options="orderStatus.id as orderStatus.description for orderStatus in orderStatuses"
+      name="orderStatus"
+      ng-required="true"
+    >
+      <option value="">Selecione o estado da ordem</option>
+    </select>
+    <select
+      class="form-control"
+      ng-model="serviceOrder.itemType.id"
+      ng-options="itemType.id as itemType.description for itemType in itemTypes"
+      name="itemType"
+      ng-required="true"
+    >
+      <option value="">Selecione o tipo de item</option>
+    </select>
+    <select
+      class="form-control"
+      ng-model="serviceOrder.customer.id"
+      ng-options="customer.id as customer.name for customer in customers"
+      name="customer"
+      ng-required="true"
+    >
+      <option value="">Selecione o cliente</option>
+    </select>
+  </form>
+  <div
+    ng-show="serviceOrderForm.name.$error.required && customerForm.name.$dirty"
+    class="alert alert-danger"
+  >
+    Por favor, preecha o nome!
+  </div>
+  <div
+    ng-show="serviceOrderForm.adress.$error.required && customerForm.adress.$dirty"
+    class="alert alert-danger"
+  >
+    Por favor, preecha o telefone!
+  </div>
+  <div
+    ng-show="serviceOrderForm.phone.$error.required && customerForm.phone.$dirty"
+    class="alert alert-danger"
+  >
+    Por favor, preecha a operadora!
+  </div>
+  <div
+    ng-show="serviceOrderForm.email.$error.required && customerForm.email.$dirty"
+    class="alert alert-danger"
+  >
+    Por favor, preecha a operadora!
+  </div>
+  {{ serviceOrder }}
+  <button
+    class="btn btn-primary btn-block"
+    ng-click="addServiceOrder(serviceOrder)"
+    ng-disabled="customerForm.$invalid"
+  >
+    Criar nova orderm
+  </button>
+</div>
+
+<div

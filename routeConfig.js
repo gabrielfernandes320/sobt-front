@@ -1,12 +1,17 @@
-angular.module('sobt').config(function($routeProvider){
-    $routeProvider.when('/new',{
-        templateUrl: 'view/newServiceOrder.html'
-    })
-    $routeProvider.when('/orders',{
-        templateUrl: 'view/visualizeServiceOrders.html'
-    })
-    $routeProvider.when('/newclient',{
-        templateUrl: 'view/newClient.html'
-    })
-    
+angular.module("sobt").config(function($routeProvider) {
+  $routeProvider.when("/neworder", {
+    templateUrl: "view/newServiceOrder.html"
+  });
+  $routeProvider.when("/orders", {
+    templateUrl: "view/visualizeServiceOrders.html"
+  });
+  $routeProvider.when("/newclient", {
+    templateUrl: "view/newClient.html"
+  });
+  $routeProvider.when("/newitemtype", {
+    templateUrl: "view/newItemType.html"
+  });
+  $routeProvider.when("/neworderstatus", {
+    templateUrl: "view/newOrderStatus.html"
+  });
 });

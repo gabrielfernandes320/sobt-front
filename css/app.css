@@ -1,58 +1,100 @@
-.jumbotron{
-    width: 600px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+.jumbotron {
+  width: 600px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
 }
-.table{
-    margin-top: 20px;
+.table {
+  margin-top: 20px;
 }
-.form-control{
-    margin-bottom: 5px;   
+.form-control {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
-.selecionado{
-    background-color: yellow;
+.selecionado {
+  background-color: yellow;
 }
-
 
 body {
-    font-family: "Lato", sans-serif;
-  }
-  
-  .sidenav {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-  
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
+  font-family: "Lato", sans-serif;
+  background-color: #252525;
+}
 
-  
+.navigation {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.navigation a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: #818181;
+  display: block;
+}
+
+.navigation {
+  width: 300px;
+}
+
+.navigation a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .navigation {
+    padding-top: 15px;
+  }
+  .navigation a {
+    font-size: 18px;
+  }
+}
+
+/****************************/
+
+.mainmenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+.mainmenu a:hover {
+  background-color: #1b1b1b;
+}
+
+.mainmenu li:hover .submenu {
+  display: block;
+  max-height: 200px;
+}
+
+.submenu {
+  list-style: none;
+  padding-left: 3px;
+  font-size: 16px;
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: all 0.5s ease-out;
+}
+
+.submenu a {
+  background-color: #1d1d1d;
+}
+
+/* hover behaviour for links inside .submenu */
+.submenu a:hover {
+  background-color: #181717;
+}

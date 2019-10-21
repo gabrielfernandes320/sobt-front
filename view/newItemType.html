@@ -1,0 +1,11 @@
+<div class="jumbotron" ng-controller="sobtController">
+    <h3>Novo tipo de item</h3>
+<form name="itemTypeForm">
+            <input class="form-control" type="text" ng-model="itemType.description" placeholder="Descrição" name="decription" ng-required="true">
+        </form>
+        <div ng-show="itemTypeForm.description.$error.required && itemTypeForm.description.$dirty" class="alert alert-danger">
+            Por favor, preecha a descricao!
+        </div>
+        <button class="btn btn-primary btn-block" ng-click="addItemType(itemType)" ng-disabled="itemTypeForm.$invalid">Adicionar tipo de item</button>
+    </div>
+</div>

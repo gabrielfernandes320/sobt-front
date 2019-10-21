@@ -1,20 +1,21 @@
-<div class="jumbotron" ng-controller="sobtController"> 
-        <h3>{{app}}</h3>
-        <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Cliente</th>
-                <th>Produto</th>
-                <th>Defeito</th>
-                <th>Situacao</th>
-            </tr>
-            <tr ng-repeat="serviceOrder in serviceOrders">
-                <td>{{serviceOrder.id}}</td>
-                <td>{{serviceOrder.customer.name}}</td>
-                <td>{{serviceOrder.itemName}}</td>
-                <td>{{serviceOrder.itemProblem}}</td>
-                <td>{{serviceOrder.orderStatus.description}}</td>
-            </tr>
-        </table>
-        <hr/>
-    </div>
+<div class="jumbotron" ng-controller="sobtController">
+  <h3>{{ app }}</h3>
+  <table class="table table-striped">
+    <tr>
+      <th>Id</th>
+      <th>Cliente</th>
+      <th>Produto</th>
+      <th>Defeito</th>
+      <th>Situacao</th>
+    </tr>
+    <tr ng-repeat="serviceOrder in serviceOrders">
+      <td>{{ serviceOrder.id }}</td>
+      <td>{{ serviceOrder.customer.name }}</td>
+      <td>{{ serviceOrder.itemName }}</td>
+      <td>{{ serviceOrder.itemProblem }}</td>
+      <td>{{ serviceOrder.orderStatus.description }}</td>
+    </tr>
+  </table>
+
+  <hr />
+</div>
