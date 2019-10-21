@@ -5,5 +5,8 @@ angular.module('sobt').config(function($routeProvider){
     $routeProvider.when('/orders',{
         templateUrl: 'view/visualizeServiceOrders.html'
     })
+    $routeProvider.when('/newclient',{
+        templateUrl: 'view/newClient.html'
+    })
     
 });
