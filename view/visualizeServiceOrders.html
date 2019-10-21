@@ -1,22 +1,20 @@
 <div class="jumbotron" ng-controller="sobtController"> 
         <h3>{{app}}</h3>
-        <table class="table">
+        <table class="table table-striped">
             <tr>
-                <th></th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Operadora</th>
-                <th></th>
+                <th>Id</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Defeito</th>
+                <th>Situacao</th>
             </tr>
-            <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
-                <td><input type="checkbox" ng-model="contato.selecionado"></td>
-                <td>{{contato.nome}}</td>
-                <td>{{contato.telefone}}</td>
-                <td>{{contato.operadora.nome}}</td>
-                <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
+            <tr ng-repeat="serviceOrder in serviceOrders">
+                <td>{{serviceOrder.id}}</td>
+                <td>{{serviceOrder.customer.name}}</td>
+                <td>{{serviceOrder.itemName}}</td>
+                <td>{{serviceOrder.itemProblem}}</td>
+                <td>{{serviceOrder.orderStatus.description}}</td>
             </tr>
         </table>
         <hr/>
-        
-        <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar contatos</button>
     </div>
