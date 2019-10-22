@@ -4,8 +4,8 @@ angular.module("sobt").controller("sobtController", function($scope, $http) {
   $scope.orderStatuses = [];
   $scope.itemTypes = [];
   $scope.customers = [];
-
   $scope.contatos = [];
+  $scope.selecionado = "selecionado";
 
   var carregarServiceNotes = function() {
     $http
@@ -14,7 +14,6 @@ angular.module("sobt").controller("sobtController", function($scope, $http) {
 
     function successCallback(response) {
       $scope.serviceOrders = response.data;
-      console.log(response);
     }
     function errorCallback(error) {
       console.log(error);
@@ -28,7 +27,6 @@ angular.module("sobt").controller("sobtController", function($scope, $http) {
 
     function successCallback(response) {
       $scope.orderStatuses = response.data;
-      console.log(response);
     }
     function errorCallback(error) {
       console.log(error);
@@ -117,17 +115,25 @@ angular.module("sobt").controller("sobtController", function($scope, $http) {
   /*$scope.adicionarserviceOrder = function(serviceOrder){
                 $scope.serviceOrder.push(angular.copy(serviceOrder));
                 $scope.serviceOrderForm.$setPrestine();
-            };
-            $scope.apagarserviceOrder = function(serviceOrder) {
-                $scope.serviceOrder = serviceOrder.filter(function (serviceOrder) {
-                    if (!serviceOrder.selecionado) return serviceOrder;
-                })
-            };
-            $scope.isserviceOrderelecionado = function (serviceOrder) {
-                return serviceOrder.some(function (serviceOrder) {
-                    return serviceOrder.selecionado;
-                });
             };*/
+  $scope.deleteCustomers = function(customers) {
+    $scope.customers = customers.filter(function(customer) {
+      if (customer.selected) {
+        $http({
+          method: "DELETE",
+          url: "http://localhost:9000/api/v1/customers" + "/" + customer.id
+        });
+      }
+    });
+    $scope.customers = customers.filter(function(customer) {
+      if (!customer.selected) return customer;
+    });
+  };
+  $scope.isClientSelected = function(customers) {
+    return customers.some(function(customers) {
+      return customers.selected;
+    });
+  };
 
   carregarServiceNotes();
   loadOrderStatuses();

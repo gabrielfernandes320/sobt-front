@@ -1,0 +1,49 @@
+<div class="jumbotron" ng-controller="sobtController">
+  <h3>Clientes</h3>
+  <input
+    type="text"
+    class="form-control"
+    ng-model="searchParameter"
+    placeholder="Pesquisar..."
+  />
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Endereco</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr
+      ng-class="{selected: client.selected}"
+      ng-repeat="client in customers | filter: searchParameter"
+    >
+      <td><input type="checkbox" ng-model="client.selected" /></td>
+      <td contenteditable="true">{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.adress }}</td>
+      <td>
+        <div style="width: 20px; height: 20px;"></div>
+      </td>
+      <td>
+        <button ng-click="editContact(contact)">Edit</button>
+      </td>
+    </tr>
+  </table>
+
+  <button
+    class="btn btn-danger btn-block"
+    ng-click="deleteCustomers(customers)"
+    ng-disabled="!isClientSelected(customers)"
+    ng-show="customers.length > 0"
+  >
+    Apagar clientes
+  </button>
+
+  <hr />
+</div>

@@ -8,6 +8,9 @@ angular.module("sobt").config(function($routeProvider) {
   $routeProvider.when("/newclient", {
     templateUrl: "view/newClient.html"
   });
+  $routeProvider.when("/clients", {
+    templateUrl: "view/visualizeClients.html"
+  });
   $routeProvider.when("/newitemtype", {
     templateUrl: "view/newItemType.html"
   });

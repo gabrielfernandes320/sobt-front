@@ -1,5 +1,5 @@
 .jumbotron {
-  width: 600px;
+  width: auto;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -12,8 +12,8 @@
   margin-top: 10px;
   margin-bottom: 5px;
 }
-.selecionado {
-  background-color: yellow;
+.selected {
+  color: #0000001c;
 }
 
 body {
