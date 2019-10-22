@@ -1,21 +1,94 @@
-<div class="jumbotron" ng-controller="sobtController">
-  <h3>{{ app }}</h3>
+<div class="jumbotron">
+  <h3>Ordens de serviço</h3>
+  <input
+    type="text"
+    class="form-control"
+    ng-model="searchParameter"
+    placeholder="Pesquisar..."
+  />
   <table class="table table-striped">
-    <tr>
+    <thead>
+      <th></th>
       <th>Id</th>
       <th>Cliente</th>
       <th>Produto</th>
       <th>Defeito</th>
+      <th>Categoria</th>
       <th>Situacao</th>
-    </tr>
-    <tr ng-repeat="serviceOrder in serviceOrders">
-      <td>{{ serviceOrder.id }}</td>
-      <td>{{ serviceOrder.customer.name }}</td>
-      <td>{{ serviceOrder.itemName }}</td>
-      <td>{{ serviceOrder.itemProblem }}</td>
-      <td>{{ serviceOrder.orderStatus.description }}</td>
-    </tr>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody
+      ng-class="{selected: serviceOrder.selected}"
+      ng-repeat="serviceOrder in serviceOrders | filter: searchParameter"
+      ng-include="getTemplate(serviceOrder)"
+    ></tbody>
   </table>
+
+  <script type="text/ng-template" id="display">
+    <td><input type="checkbox" ng-model="serviceOrder.selected" /></td>
+    <td>{{ serviceOrder.id }}</td>
+    <td>{{ serviceOrder.customer.name }}</td>
+    <td>{{ serviceOrder.itemName }}</td>
+    <td>{{ serviceOrder.itemProblem }}</td>
+    <td>{{ serviceOrder.itemType.description }}</td>
+    <td>{{ serviceOrder.orderStatus.description }}</td>
+    <td>
+      <div style="width: 20px; height: 20px;"></div>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary btn-primary" ng-click="editServiceOrder(serviceOrder)">Editar</button>
+    </td>
+  </script>
+
+  <script type="text/ng-template" id="edit">
+    <td></td>
+    <td>{{ serviceOrder.id }}</td>
+    <td><select
+      class="form-control"
+      ng-model="serviceOrder.customer.id"
+      ng-options="customer.id as customer.name for customer in customers"
+      name="customer"
+      ng-required="true"
+    >
+      <option value="">Selecione o cliente</option>
+    </select></td>
+    <td><input type="text" ng-model=serviceOrder.itemName class="form-control input-sm"/></td>
+    <td><input type="text" ng-model=serviceOrder.itemProblem class="form-control input-sm"/></td>
+    <td><select
+      class="form-control"
+      ng-model="serviceOrder.itemType.id"
+      ng-options="itemType.id as itemType.description for itemType in itemTypes"
+      name="itemType"
+      ng-required="true"
+    >
+      <option value="">Selecione o tipo de item</option>
+    </select></td>
+    <td><select
+      class="form-control"
+      ng-model="serviceOrder.orderStatus.id"
+      ng-options="orderStatus.id as orderStatus.description for orderStatus in orderStatuses"
+      name="orderStatus"
+      ng-required="true"
+    >
+      <option value="">Selecione o estado da ordem</option>
+    </select></td>
+    <td>
+     <button type="button" class="btn btn-primary" ng-click="updateServiceOrder(serviceOrder)">Salvar</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+    </td>
+  </script>
+
+  <button
+    class="btn btn-danger btn-block"
+    ng-click="deleteServiceOrders(serviceOrders)"
+    ng-disabled="!isServiceOrderSelected(serviceOrders)"
+    ng-show="serviceOrders.length > 0"
+  >
+    Apagar clientes
+  </button>
 
   <hr />
 </div>

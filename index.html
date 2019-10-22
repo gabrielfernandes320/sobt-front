@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>  
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script type="text/javascript" src="lib/angular/angular.js"></script>
-<script type="text/javascript" src="lib/angular/angular-route.js"></script> 
-<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/app.css">
-<script src="app.js"></script>
-<script src="routeConfig.js"></script>
-<script src="js/controllers/sobtCtrl.js"></script>
-</head>
-<body>
-<div class="container" ng-app='sobt' ng-controller="sobtController">
-    <header></header> 
-    
-    <div ng-view></div>
-    <div ng-include="'view/sidebar.html'"></div>
-    <div ng-include="'view/footer.html'"></div>
-</div>
-</body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script type="text/javascript" src="lib/angular/angular.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script src="app.js"></script>
+    <script src="routeConfig.js"></script>
+    <script src="js/controllers/sobtCtrl.js"></script>
+    <script src="js/controllers/clientCtrl.js"></script>
+    <script src="js/controllers/serviceOrderCtrl.js"></script>
+  </head>
+  <body>
+    <div class="container" ng-app="sobt" ng-controller="sobtController">
+      <header></header>
+
+      <div ng-view></div>
+      <div ng-include="'view/sidebar.html'"></div>
+      <div ng-include="'view/footer.html'"></div>
+    </div>
+  </body>
 </html>

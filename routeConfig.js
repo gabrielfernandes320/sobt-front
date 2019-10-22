@@ -3,13 +3,15 @@ angular.module("sobt").config(function($routeProvider) {
     templateUrl: "view/newServiceOrder.html"
   });
   $routeProvider.when("/orders", {
-    templateUrl: "view/visualizeServiceOrders.html"
+    templateUrl: "view/visualizeServiceOrders.html",
+    controller: "serviceOrderController"
   });
   $routeProvider.when("/newclient", {
     templateUrl: "view/newClient.html"
   });
   $routeProvider.when("/clients", {
-    templateUrl: "view/visualizeClients.html"
+    templateUrl: "view/visualizeClients.html",
+    controller: "clientController"
   });
   $routeProvider.when("/newitemtype", {
     templateUrl: "view/newItemType.html"

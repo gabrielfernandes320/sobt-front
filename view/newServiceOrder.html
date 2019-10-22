@@ -1,4 +1,4 @@
-<div class="jumbotron" ng-controller="sobtController">
+<div class="jumbotron" ng-controller="serviceOrderController">
   <h3>Nova ordem de serviço</h3>
   <form name="serviceOrderForm">
     <input
@@ -55,19 +55,19 @@
     ng-show="serviceOrderForm.adress.$error.required && customerForm.adress.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha o telefone!
+    Por favor, preecha o endereco!
   </div>
   <div
     ng-show="serviceOrderForm.phone.$error.required && customerForm.phone.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha a operadora!
+    Por favor, preecha o telefone!
   </div>
   <div
     ng-show="serviceOrderForm.email.$error.required && customerForm.email.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha a operadora!
+    Por favor, preecha o email!
   </div>
   {{ serviceOrder }}
   <button

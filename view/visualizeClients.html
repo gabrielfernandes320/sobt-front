@@ -1,4 +1,4 @@
-<div class="jumbotron" ng-controller="sobtController">
+<div class="jumbotron">
   <h3>Clientes</h3>
   <input
     type="text"
@@ -7,7 +7,7 @@
     placeholder="Pesquisar..."
   />
   <table class="table table-striped">
-    <tr>
+    <thead>
       <th></th>
       <th>Id</th>
       <th>Nome</th>
@@ -16,31 +16,49 @@
       <th>Endereco</th>
       <th></th>
       <th></th>
-    </tr>
-    <tr
+    </thead>
+    <tbody
       ng-class="{selected: client.selected}"
-      ng-repeat="client in customers | filter: searchParameter"
-    >
-      <td><input type="checkbox" ng-model="client.selected" /></td>
-      <td contenteditable="true">{{ client.id }}</td>
-      <td>{{ client.name }}</td>
-      <td>{{ client.email }}</td>
-      <td>{{ client.phone }}</td>
-      <td>{{ client.adress }}</td>
-      <td>
-        <div style="width: 20px; height: 20px;"></div>
-      </td>
-      <td>
-        <button ng-click="editContact(contact)">Edit</button>
-      </td>
-    </tr>
+      ng-repeat="client in clients | filter: searchParameter"
+      ng-include="getTemplate(client)"
+    ></tbody>
   </table>
+
+  <script type="text/ng-template" id="display">
+    <td><input type="checkbox" ng-model="client.selected" /></td>
+    <td>{{ client.id }}</td>
+    <td>{{ client.name }}</td>
+    <td>{{ client.email }}</td>
+    <td>{{ client.phone }}</td>
+    <td>{{ client.adress }}</td>
+    <td>
+      <div style="width: 20px; height: 20px;"></div>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary btn-primary" ng-click="editClient(client)">Editar</button>
+    </td>
+  </script>
+
+  <script type="text/ng-template" id="edit">
+    <td></td>
+    <td>{{ client.id }}</td>
+    <td><input type="text" ng-model=client.name class="form-control input-sm"/></td>
+    <td><input type="text" ng-model=client.email class="form-control input-sm"/></td>
+    <td><input type="text" ng-model=client.phone class="form-control input-sm"/></td>
+    <td><input type="text" ng-model=client.adress class="form-control input-sm"/></td>
+    <td>
+     <button type="button" class="btn btn-primary" ng-click="updateClient(client)">Salvar</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+    </td>
+  </script>
 
   <button
     class="btn btn-danger btn-block"
-    ng-click="deleteCustomers(customers)"
-    ng-disabled="!isClientSelected(customers)"
-    ng-show="customers.length > 0"
+    ng-click="deleteClients(clients)"
+    ng-disabled="!isClientSelected(clients)"
+    ng-show="clients.length > 0"
   >
     Apagar clientes
   </button>
