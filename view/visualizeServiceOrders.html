@@ -1,5 +1,6 @@
 <div class="jumbotron">
-  <h3>Ordens de serviço</h3>
+  <h4>Ordens de servico</h4>
+
   <input
     type="text"
     class="form-control"
@@ -45,7 +46,7 @@
     <td></td>
     <td>{{ serviceOrder.id }}</td>
     <td><select
-      class="form-control"
+      class="form-control input-sm"
       ng-model="serviceOrder.customer.id"
       ng-options="customer.id as customer.name for customer in customers"
       name="customer"
@@ -56,7 +57,7 @@
     <td><input type="text" ng-model=serviceOrder.itemName class="form-control input-sm"/></td>
     <td><input type="text" ng-model=serviceOrder.itemProblem class="form-control input-sm"/></td>
     <td><select
-      class="form-control"
+      class="form-control input-sm"
       ng-model="serviceOrder.itemType.id"
       ng-options="itemType.id as itemType.description for itemType in itemTypes"
       name="itemType"
@@ -65,7 +66,7 @@
       <option value="">Selecione o tipo de item</option>
     </select></td>
     <td><select
-      class="form-control"
+      class="form-control input-sm"
       ng-model="serviceOrder.orderStatus.id"
       ng-options="orderStatus.id as orderStatus.description for orderStatus in orderStatuses"
       name="orderStatus"
@@ -80,7 +81,6 @@
       <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
     </td>
   </script>
-
   <button
     class="btn btn-danger btn-block"
     ng-click="deleteServiceOrders(serviceOrders)"

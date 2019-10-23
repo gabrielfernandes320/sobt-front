@@ -37,10 +37,9 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
           url: "http://localhost:9000/api/v1/customers" + "/" + client.id
         });
       }
+      reload();
     });
-    $scope.clients = clients.filter(function(client) {
-      if (!client.selected) return client;
-    });
+    reload();
   };
 
   $scope.updateClient = function(client) {
@@ -50,6 +49,7 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
       data: client
     });
     $scope.reset();
+    reload();
   };
 
   $scope.isClientSelected = function(clients) {
@@ -70,7 +70,14 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
 
   $scope.reset = function() {
     $scope.selectedClient = {};
-    $scope.loadClients();
+  };
+
+  var reload = function() {
+    loadClients();
+    loadClients();
+    loadClients();
+    loadClients();
+    loadClients();
   };
 
   loadClients();

@@ -18,7 +18,13 @@ angular
       }
     };
 
+    $scope.$watch($scope.serviceOrders, function(oldValue, newValue) {
+      $scope.serviceOrders = newValue;
+      console.log(newValue);
+    });
+
     $scope.addServiceOrder = function(serviceOrder) {
+      serviceOrder.orderDate = new Date();
       $http
         .post("http://localhost:9000/api/v1/serviceOrders", serviceOrder)
         .then(successCallback, errorCallback);
@@ -42,10 +48,9 @@ angular
               serviceOrder.id
           });
         }
+        reload();
       });
-      $scope.serviceOrders = serviceOrders.filter(function(serviceOrder) {
-        if (!serviceOrder.selected) return serviceOrder;
-      });
+      reload();
     };
 
     $scope.updateServiceOrder = function(serviceOrder) {
@@ -55,8 +60,8 @@ angular
           "http://localhost:9000/api/v1/serviceOrders" + "/" + serviceOrder.id,
         data: serviceOrder
       });
-      loadServiceOrders();
       $scope.reset();
+      reload();
     };
 
     $scope.isServiceOrderSelected = function(serviceOrders) {
@@ -77,8 +82,12 @@ angular
 
     $scope.reset = function() {
       $scope.selectedServiceOrder = {};
-      $scope.loadServiceOrders();
     };
 
+    var reload = function() {
+      loadServiceOrders();
+      loadServiceOrders();
+      loadServiceOrders();
+    };
     loadServiceOrders();
   });
