@@ -8,10 +8,8 @@
   />
   <table class="table table-striped">
     <thead>
-      <th></th>
       <th>Id</th>
       <th>Descrição</th>
-      <th></th>
       <th></th>
     </thead>
     <tr
@@ -22,7 +20,6 @@
   </table>
 
   <script type="text/ng-template" id="display">
-    <td><input type="checkbox" ng-model="itemType.selected" /></td>
     <td>{{ itemType.id }}</td>
     <td>{{ itemType.description }}</td>
     <td>
@@ -30,29 +27,20 @@
     </td>
     <td>
       <button type="button" class="btn btn-primary btn-primary" ng-click="editItemType(itemType)">Editar</button>
+      <button type="button" class="btn btn-danger"ng-click="deleteItemType(itemType)">Apagar</button>
     </td>
   </script>
 
   <script type="text/ng-template" id="edit">
-    <td></td>
     <td>{{ itemType.id }}</td>
     <td><input type="text" ng-model=itemType.description class="form-control input-sm"/></td>
     <td>
+      <div class="btn-group">
      <button type="button" class="btn btn-primary" ng-click="updateItemType(itemType)">Salvar</button>
-    </td>
-    <td>
-      <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+     <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+     </div>
     </td>
   </script>
-
-  <button
-    class="btn btn-danger btn-block"
-    ng-click="deleteItemTypes(itemTypes)"
-    ng-disabled="!isItemTypeSelected(itemTypes)"
-    ng-show="itemTypes.length > 0"
-  >
-    Apagar tipos de item
-  </button>
 
   <hr />
 </div>

@@ -33,19 +33,15 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
     }
   };
 
-  $scope.deleteClients = function(clients) {
-    $scope.clients = clients.filter(function(client) {
-      if (client.selected) {
-        $http({
-          method: "DELETE",
-          url: "http://localhost:9000/api/v1/customers" + "/" + client.id
-        });
-        var index = clients.indexOf(client);
-        if (index > -1) {
-          clients.splice(index, 1);
-        }
-      } else return client;
+  $scope.deleteClient = function(client) {
+    $http({
+      method: "DELETE",
+      url: "http://localhost:9000/api/v1/customers" + "/" + client.id
     });
+    var index = $scope.clients.indexOf(client);
+    if (index > -1) {
+      $scope.clients.splice(index, 1);
+    }
   };
 
   $scope.updateClient = function(client) {

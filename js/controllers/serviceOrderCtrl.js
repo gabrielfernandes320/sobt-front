@@ -32,22 +32,16 @@ angular
       }
     };
 
-    $scope.deleteServiceOrders = function(serviceOrders) {
-      $scope.serviceOrders = serviceOrders.filter(function(serviceOrder) {
-        if (serviceOrder.selected) {
-          $http({
-            method: "DELETE",
-            url:
-              "http://localhost:9000/api/v1/serviceOrders" +
-              "/" +
-              serviceOrder.id
-          });
-          var index = $scope.serviceOrders.indexOf(serviceOrder);
-          if (index > -1) {
-            $scope.serviceOrders.splice(index, 1);
-          }
-        } else return serviceOrder;
+    $scope.deleteServiceOrder = function(serviceOrder) {
+      $http({
+        method: "DELETE",
+        url:
+          "http://localhost:9000/api/v1/serviceOrders" + "/" + serviceOrder.id
       });
+      var index = $scope.serviceOrders.indexOf(serviceOrder);
+      if (index > -1) {
+        $scope.serviceOrders.splice(index, 1);
+      }
     };
 
     $scope.updateServiceOrder = function(serviceOrder) {
@@ -62,6 +56,9 @@ angular
         $scope.serviceOrders.splice(index, 1);
       }
       $scope.reset();
+      loadServiceOrders();
+      loadServiceOrders();
+      loadServiceOrders();
       loadServiceOrders();
       loadServiceOrders();
       loadServiceOrders();

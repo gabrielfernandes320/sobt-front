@@ -13,6 +13,12 @@
   margin-bottom: 5px;
 }
 
+.btn-group {
+  margin: 10px;
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
 body {
   font-family: "Lato", sans-serif;
   background-color: #e9ecf0;

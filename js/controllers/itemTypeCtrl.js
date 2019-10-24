@@ -35,19 +35,15 @@ angular
       }
     };
 
-    $scope.deleteItemTypes = function(itemTypes) {
-      $scope.itemTypes = itemTypes.filter(function(itemType) {
-        if (itemType.selected) {
-          $http({
-            method: "DELETE",
-            url: "http://localhost:9000/api/v1/itemTypes" + "/" + itemType.id
-          });
-          var index = itemTypes.indexOf(itemType);
-          if (index > -1) {
-            itemTypes.splice(index, 1);
-          }
-        } else return itemType;
+    $scope.deleteItemType = function(itemType) {
+      $http({
+        method: "DELETE",
+        url: "http://localhost:9000/api/v1/itemTypes" + "/" + itemType.id
       });
+      var index = $scope.itemTypes.indexOf(itemType);
+      if (index > -1) {
+        $scope.itemTypes.splice(index, 1);
+      }
     };
 
     $scope.updateItemType = function(itemType) {

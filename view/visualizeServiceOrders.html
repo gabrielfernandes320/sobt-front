@@ -9,14 +9,12 @@
   />
   <table class="table table-striped">
     <thead>
-      <th></th>
       <th>Id</th>
       <th>Cliente</th>
       <th>Produto</th>
       <th>Defeito</th>
       <th>Categoria</th>
       <th>Situacao</th>
-      <th></th>
       <th></th>
     </thead>
     <tr
@@ -27,23 +25,27 @@
   </table>
 
   <script type="text/ng-template" id="display">
-    <td><input type="checkbox" ng-model="serviceOrder.selected" /></td>
-    <td>{{ serviceOrder.id }}</td>
-    <td>{{ serviceOrder.customer.name }}</td>
-    <td>{{ serviceOrder.itemName }}</td>
-    <td>{{ serviceOrder.itemProblem }}</td>
-    <td>{{ serviceOrder.itemType.description }}</td>
-    <td>{{ serviceOrder.orderStatus.description }}</td>
-    <td>
-      <div style="width: 20px; height: 20px;"></div>
-    </td>
-    <td>
-      <button type="button" class="btn btn-primary btn-primary" ng-click="editServiceOrder(serviceOrder)">Editar</button>
-    </td>
+      <td>{{ serviceOrder.id }}</td>
+      <td>{{ serviceOrder.customer.name }}</td>
+      <td>{{ serviceOrder.itemName }}</td>
+      <td>{{ serviceOrder.itemProblem }}</td>
+      <td>{{ serviceOrder.itemType.description }}</td>
+      <td>{{ serviceOrder.orderStatus.description }}</td>
+      <td>
+        <div style="width: 20px; height: 20px;"></div>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-primary" ng-click="editServiceOrder(serviceOrder)">Editar</button>
+        <button
+      class="btn btn-danger"
+      ng-click="deleteServiceOrder(serviceOrder)"
+    >
+      Apagar
+    </button>
+      </td>
   </script>
 
   <script type="text/ng-template" id="edit">
-    <td></td>
     <td>{{ serviceOrder.id }}</td>
     <td><select
       class="form-control input-sm"
@@ -78,20 +80,12 @@
       <option value="">Selecione o estado da ordem</option>
     </select></td>
     <td>
+      <div class="btn-group">
      <button type="button" class="btn btn-primary" ng-click="updateServiceOrder(serviceOrder)">Salvar</button>
-    </td>
-    <td>
-      <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+     <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+     </div>
     </td>
   </script>
-  <button
-    class="btn btn-danger btn-block"
-    ng-click="deleteServiceOrders(serviceOrders)"
-    ng-disabled="!isServiceOrderSelected(serviceOrders)"
-    ng-show="serviceOrders.length > 0"
-  >
-    Apagar clientes
-  </button>
 
   <hr />
 </div>

@@ -40,6 +40,9 @@
   >
     Por favor, preecha o nome!
   </div>
+  <div ng-show="clientForm.name.$error.minlenght" class="alert alert-danger">
+    O nome deve possuir mais de 5 caracteres!
+  </div>
   <div
     ng-show="clientForm.adress.$error.required && clientForm.adress.$dirty"
     class="alert alert-danger"

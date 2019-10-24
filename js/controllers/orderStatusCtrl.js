@@ -31,20 +31,15 @@ angular
       }
     };
 
-    $scope.deleteOrderStatuses = function(orderStatuses) {
-      $scope.orderStatuses = orderStatuses.filter(function(orderStatus) {
-        if (orderStatus.selected) {
-          $http({
-            method: "DELETE",
-            url:
-              "http://localhost:9000/api/v1/orderStatus" + "/" + orderStatus.id
-          });
-          var index = orderStatuses.indexOf(orderStatus);
-          if (index > -1) {
-            orderStatuses.splice(index, 1);
-          }
-        } else return orderStatus;
+    $scope.deleteOrderStatus = function(orderStatus) {
+      $http({
+        method: "DELETE",
+        url: "http://localhost:9000/api/v1/orderStatus" + "/" + orderStatus.id
       });
+      var index = $scope.orderStatuses.indexOf(orderStatus);
+      if (index > -1) {
+        $scope.orderStatuses.splice(index, 1);
+      }
     };
 
     $scope.updateOrderStatus = function(orderStatus) {
