@@ -1,0 +1,58 @@
+<div class="jumbotron">
+  <h3>Tipos de item</h3>
+  <input
+    type="text"
+    class="form-control"
+    ng-model="searchParameter"
+    placeholder="Pesquisar..."
+  />
+  <table class="table table-striped">
+    <thead>
+      <th></th>
+      <th>Id</th>
+      <th>Descrição</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody
+      ng-class="{selected: itemType.selected}"
+      ng-repeat="itemType in itemTypes | filter: searchParameter"
+      ng-include="getTemplate(itemType)"
+    ></tbody>
+  </table>
+
+  <script type="text/ng-template" id="display">
+    <td><input type="checkbox" ng-model="itemType.selected" /></td>
+    <td>{{ itemType.id }}</td>
+    <td>{{ itemType.description }}</td>
+    <td>
+      <div style="width: 20px; height: 20px;"></div>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary btn-primary" ng-click="editItemType(itemType)">Editar</button>
+    </td>
+  </script>
+
+  <script type="text/ng-template" id="edit">
+    <td></td>
+    <td>{{ itemType.id }}</td>
+    <td><input type="text" ng-model=itemType.description class="form-control input-sm"/></td>
+    <td>
+     <button type="button" class="btn btn-primary" ng-click="updateItemType(itemType)">Salvar</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+    </td>
+  </script>
+
+  <button
+    class="btn btn-danger btn-block"
+    ng-click="deleteItemTypes(itemTypes)"
+    ng-disabled="!isItemTypeSelected(itemTypes)"
+    ng-show="itemTypes.length > 0"
+  >
+    Apagar tipos de item
+  </button>
+
+  <hr />
+</div>

@@ -16,6 +16,10 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
     }
   };
 
+  $scope.vai = function() {
+    console.log("OK");
+  };
+
   $scope.addClient = function(client) {
     $http
       .post("http://localhost:9000/api/v1/customers", client)
@@ -36,10 +40,12 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
           method: "DELETE",
           url: "http://localhost:9000/api/v1/customers" + "/" + client.id
         });
-      }
-      reload();
+        var index = clients.indexOf(client);
+        if (index > -1) {
+          clients.splice(index, 1);
+        }
+      } else return client;
     });
-    reload();
   };
 
   $scope.updateClient = function(client) {
@@ -73,11 +79,11 @@ angular.module("sobt").controller("clientController", function($scope, $http) {
   };
 
   var reload = function() {
-    loadClients();
-    loadClients();
-    loadClients();
-    loadClients();
-    loadClients();
+    loadItemTypes();
+    loadItemTypes();
+    loadItemTypes();
+    loadItemTypes();
+    loadItemTypes();
   };
 
   loadClients();

@@ -19,6 +19,7 @@
     />
     <select
       class="form-control"
+      ng-controller="orderStatusController"
       ng-model="serviceOrder.orderStatus.id"
       ng-options="orderStatus.id as orderStatus.description for orderStatus in orderStatuses"
       name="orderStatus"
@@ -28,6 +29,7 @@
     </select>
     <select
       class="form-control"
+      ng-controller="itemTypeController"
       ng-model="serviceOrder.itemType.id"
       ng-options="itemType.id as itemType.description for itemType in itemTypes"
       name="itemType"
@@ -37,8 +39,9 @@
     </select>
     <select
       class="form-control"
+      ng-controller="clientController"
       ng-model="serviceOrder.customer.id"
-      ng-options="customer.id as customer.name for customer in customers"
+      ng-options="client.id as client.name for client in clients"
       name="customer"
       ng-required="true"
     >
@@ -69,7 +72,7 @@
   >
     Por favor, preecha o email!
   </div>
-  {{ serviceOrder }}
+
   <button
     class="btn btn-primary btn-block"
     ng-click="addServiceOrder(serviceOrder)"

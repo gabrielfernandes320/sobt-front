@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h4>Ordens de servico</h4>
+  <h3>Ordens de servico</h3>
 
   <input
     type="text"
@@ -47,8 +47,9 @@
     <td>{{ serviceOrder.id }}</td>
     <td><select
       class="form-control input-sm"
+      ng-controller="clientController"
       ng-model="serviceOrder.customer.id"
-      ng-options="customer.id as customer.name for customer in customers"
+      ng-options="client.id as client.name for client in clients"
       name="customer"
       ng-required="true"
     >
@@ -58,6 +59,7 @@
     <td><input type="text" ng-model=serviceOrder.itemProblem class="form-control input-sm"/></td>
     <td><select
       class="form-control input-sm"
+      ng-controller="itemTypeController"
       ng-model="serviceOrder.itemType.id"
       ng-options="itemType.id as itemType.description for itemType in itemTypes"
       name="itemType"
@@ -67,6 +69,7 @@
     </select></td>
     <td><select
       class="form-control input-sm"
+      ng-controller="orderStatusController"
       ng-model="serviceOrder.orderStatus.id"
       ng-options="orderStatus.id as orderStatus.description for orderStatus in orderStatuses"
       name="orderStatus"

@@ -47,10 +47,12 @@ angular
               "/" +
               serviceOrder.id
           });
-        }
-        reload();
+          var index = serviceOrders.indexOf(serviceOrder);
+          if (index > -1) {
+            serviceOrders.splice(index, 1);
+          }
+        } else return serviceOrder;
       });
-      reload();
     };
 
     $scope.updateServiceOrder = function(serviceOrder) {
@@ -85,9 +87,11 @@ angular
     };
 
     var reload = function() {
-      loadServiceOrders();
-      loadServiceOrders();
-      loadServiceOrders();
+      loadItemTypes();
+      loadItemTypes();
+      loadItemTypes();
+      loadItemTypes();
+      loadItemTypes();
     };
     loadServiceOrders();
   });

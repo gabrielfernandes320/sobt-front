@@ -1,0 +1,58 @@
+<div class="jumbotron">
+  <h3>Situações de ordens</h3>
+  <input
+    type="text"
+    class="form-control"
+    ng-model="searchParameter"
+    placeholder="Pesquisar..."
+  />
+  <table class="table table-striped">
+    <thead>
+      <th></th>
+      <th>Id</th>
+      <th>Descrição</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody
+      ng-class="{selected: orderStatus.selected}"
+      ng-repeat="orderStatus in orderStatuses | filter: searchParameter"
+      ng-include="getTemplate(orderStatus)"
+    ></tbody>
+  </table>
+
+  <script type="text/ng-template" id="display">
+    <td><input type="checkbox" ng-model="orderStatus.selected" /></td>
+    <td>{{ orderStatus.id }}</td>
+    <td>{{ orderStatus.description }}</td>
+    <td>
+      <div style="width: 20px; height: 20px;"></div>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary btn-primary" ng-click="editOrderStatus(orderStatus)">Editar</button>
+    </td>
+  </script>
+
+  <script type="text/ng-template" id="edit">
+    <td></td>
+    <td>{{ orderStatus.id }}</td>
+    <td><input type="text" ng-model=orderStatus.description class="form-control input-sm"/></td>
+    <td>
+     <button type="button" class="btn btn-primary" ng-click="updateOrderStatus(orderStatus)">Salvar</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" ng-click="reset()">Cancelar</button>
+    </td>
+  </script>
+
+  <button
+    class="btn btn-danger btn-block"
+    ng-click="deleteOrderStatuses(orderStatuses)"
+    ng-disabled="!isOrderStatusSelected(orderStatuses)"
+    ng-show="orderStatuses.length > 0"
+  >
+    Apagar situações de ordens
+  </button>
+
+  <hr />
+</div>
