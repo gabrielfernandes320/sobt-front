@@ -49,34 +49,40 @@
     </select>
   </form>
   <div
-    ng-show="serviceOrderForm.name.$error.required && customerForm.name.$dirty"
+    ng-show="serviceOrderForm.itemName.$error.required && serviceOrderForm.itemName.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha o nome!
+    Por favor, preecha o nome do item!
   </div>
   <div
-    ng-show="serviceOrderForm.adress.$error.required && customerForm.adress.$dirty"
+    ng-show="serviceOrderForm.itemProblem.$error.required && serviceOrderForm.itemProblem.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha o endereco!
+    Por favor, descreeva o problema do item!
   </div>
   <div
-    ng-show="serviceOrderForm.phone.$error.required && customerForm.phone.$dirty"
+    ng-show="serviceOrderForm.orderStatus.$error.required && serviceOrderForm.orderStatus.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha o telefone!
+    Por favor, selecione o estado da ordem!
   </div>
   <div
-    ng-show="serviceOrderForm.email.$error.required && customerForm.email.$dirty"
+    ng-show="serviceOrderForm.itemType.$error.required && serviceOrderForm.itemType.$dirty"
     class="alert alert-danger"
   >
-    Por favor, preecha o email!
+    Por favor, selecione o tipo do item!
+  </div>
+  <div
+    ng-show="serviceOrderForm.customer.$error.required && serviceOrderForm.customer.$dirty"
+    class="alert alert-danger"
+  >
+    Por favor, selecione o cliente!
   </div>
 
   <button
     class="btn btn-primary btn-block"
     ng-click="addServiceOrder(serviceOrder)"
-    ng-disabled="customerForm.$invalid"
+    ng-disabled="serviceOrderForm.$invalid"
   >
     Criar nova orderm
   </button>

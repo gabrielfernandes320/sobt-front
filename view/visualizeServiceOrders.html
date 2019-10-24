@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h3>Ordens de servico</h3>
+  <h3>Ordens de serviço</h3>
 
   <input
     type="text"
@@ -19,11 +19,11 @@
       <th></th>
       <th></th>
     </thead>
-    <tbody
+    <tr
       ng-class="{selected: serviceOrder.selected}"
       ng-repeat="serviceOrder in serviceOrders | filter: searchParameter"
       ng-include="getTemplate(serviceOrder)"
-    ></tbody>
+    ></tr>
   </table>
 
   <script type="text/ng-template" id="display">

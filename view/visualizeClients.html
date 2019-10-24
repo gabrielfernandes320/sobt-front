@@ -17,11 +17,11 @@
       <th></th>
       <th></th>
     </thead>
-    <tbody
+    <tr
       ng-class="{selected: client.selected}"
       ng-repeat="client in clients | filter: searchParameter"
       ng-include="getTemplate(client)"
-    ></tbody>
+    ></tr>
   </table>
 
   <script type="text/ng-template" id="display">

@@ -54,7 +54,19 @@ angular
         data: orderStatus
       });
       $scope.reset();
-      reload();
+    };
+
+    var getOrderStatus = function(id) {
+      $http
+        .get("http://localhost:9000/api/v1/orderStatus" + "/" + id)
+        .then(successCallback, errorCallback);
+
+      function successCallback(response) {
+        return response.data;
+      }
+      function errorCallback(error) {
+        console.log(error);
+      }
     };
 
     $scope.isOrderStatusSelected = function(orderStatuses) {

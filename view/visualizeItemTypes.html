@@ -14,11 +14,11 @@
       <th></th>
       <th></th>
     </thead>
-    <tbody
+    <tr
       ng-class="{selected: itemType.selected}"
       ng-repeat="itemType in itemTypes | filter: searchParameter"
       ng-include="getTemplate(itemType)"
-    ></tbody>
+    ></tr>
   </table>
 
   <script type="text/ng-template" id="display">

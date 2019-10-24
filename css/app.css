@@ -12,13 +12,10 @@
   margin-top: 10px;
   margin-bottom: 5px;
 }
-.selected {
-  color: #0000001c;
-}
 
 body {
   font-family: "Lato", sans-serif;
-  background-color: #252525;
+  background-color: #e9ecf0;
 }
 
 .navigation {
@@ -28,7 +25,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #1d1d1d;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -49,8 +46,8 @@ body {
 }
 
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
+  margin-left: 160px;
+  font-size: 28px;
   padding: 0px 10px;
 }
 
@@ -62,8 +59,6 @@ body {
     font-size: 18px;
   }
 }
-
-/****************************/
 
 .mainmenu {
   list-style: none;
@@ -91,10 +86,9 @@ body {
 }
 
 .submenu a {
-  background-color: #1d1d1d;
+  background-color: #423f3f;
 }
 
-/* hover behaviour for links inside .submenu */
 .submenu a:hover {
-  background-color: #181717;
+  background-color: #423f3f;
 }

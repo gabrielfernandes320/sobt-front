@@ -14,11 +14,11 @@
       <th></th>
       <th></th>
     </thead>
-    <tbody
+    <tr
       ng-class="{selected: orderStatus.selected}"
       ng-repeat="orderStatus in orderStatuses | filter: searchParameter"
       ng-include="getTemplate(orderStatus)"
-    ></tbody>
+    ></tr>
   </table>
 
   <script type="text/ng-template" id="display">

@@ -18,11 +18,6 @@ angular
       }
     };
 
-    $scope.$watch($scope.serviceOrders, function(oldValue, newValue) {
-      $scope.serviceOrders = newValue;
-      console.log(newValue);
-    });
-
     $scope.addServiceOrder = function(serviceOrder) {
       serviceOrder.orderDate = new Date();
       $http
@@ -47,9 +42,9 @@ angular
               "/" +
               serviceOrder.id
           });
-          var index = serviceOrders.indexOf(serviceOrder);
+          var index = $scope.serviceOrders.indexOf(serviceOrder);
           if (index > -1) {
-            serviceOrders.splice(index, 1);
+            $scope.serviceOrders.splice(index, 1);
           }
         } else return serviceOrder;
       });
@@ -62,8 +57,29 @@ angular
           "http://localhost:9000/api/v1/serviceOrders" + "/" + serviceOrder.id,
         data: serviceOrder
       });
+      var index = $scope.serviceOrders.indexOf(serviceOrder);
+      if (index > -1) {
+        $scope.serviceOrders.splice(index, 1);
+      }
       $scope.reset();
-      reload();
+      loadServiceOrders();
+      loadServiceOrders();
+      loadServiceOrders();
+      loadServiceOrders();
+      loadServiceOrders();
+    };
+
+    var getServiceOrder = function(id) {
+      $http
+        .get("http://localhost:9000/api/v1/serviceOrders" + "/" + id)
+        .then(successCallback, errorCallback);
+
+      function successCallback(response) {
+        return response.data;
+      }
+      function errorCallback(error) {
+        console.log(error);
+      }
     };
 
     $scope.isServiceOrderSelected = function(serviceOrders) {
@@ -86,12 +102,5 @@ angular
       $scope.selectedServiceOrder = {};
     };
 
-    var reload = function() {
-      loadItemTypes();
-      loadItemTypes();
-      loadItemTypes();
-      loadItemTypes();
-      loadItemTypes();
-    };
     loadServiceOrders();
   });

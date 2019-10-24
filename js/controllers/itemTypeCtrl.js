@@ -57,7 +57,19 @@ angular
         data: itemType
       });
       $scope.reset();
-      reload();
+    };
+
+    var getItemType = function(id) {
+      $http
+        .get("http://localhost:9000/api/v1/itemTypes" + "/" + id)
+        .then(successCallback, errorCallback);
+
+      function successCallback(response) {
+        return response.data;
+      }
+      function errorCallback(error) {
+        console.log(error);
+      }
     };
 
     $scope.isItemTypeSelected = function(itemTypes) {
