@@ -12,6 +12,14 @@
     <input
       class="form-control"
       type="text"
+      ng-model="serviceOrder.itemBrand"
+      placeholder="Marca do item"
+      name="itemBrand"
+      ng-required="true"
+    />
+    <input
+      class="form-control"
+      type="text"
       ng-model="serviceOrder.itemProblem"
       placeholder="Defeito do item"
       name="itemProblem"
@@ -53,6 +61,12 @@
     class="alert alert-danger"
   >
     Por favor, preecha o nome do item!
+  </div>
+  <div
+    ng-show="serviceOrderForm.itemBrand.$error.required && serviceOrderForm.itemBrand.$dirty"
+    class="alert alert-danger"
+  >
+    Por favor, preecha a marca do item!
   </div>
   <div
     ng-show="serviceOrderForm.itemProblem.$error.required && serviceOrderForm.itemProblem.$dirty"

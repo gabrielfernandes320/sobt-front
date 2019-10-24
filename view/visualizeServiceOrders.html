@@ -12,6 +12,7 @@
       <th>Id</th>
       <th>Cliente</th>
       <th>Produto</th>
+      <th>Marca</th>
       <th>Defeito</th>
       <th>Categoria</th>
       <th>Situacao</th>
@@ -28,6 +29,7 @@
       <td>{{ serviceOrder.id }}</td>
       <td>{{ serviceOrder.customer.name }}</td>
       <td>{{ serviceOrder.itemName }}</td>
+      <td>{{ serviceOrder.itemBrand }}</td>
       <td>{{ serviceOrder.itemProblem }}</td>
       <td>{{ serviceOrder.itemType.description }}</td>
       <td>{{ serviceOrder.orderStatus.description }}</td>
@@ -58,6 +60,7 @@
       <option value="">Selecione o cliente</option>
     </select></td>
     <td><input type="text" ng-model=serviceOrder.itemName class="form-control input-sm"/></td>
+    <td><input type="text" ng-model=serviceOrder.itemBrand class="form-control input-sm"/></td>
     <td><input type="text" ng-model=serviceOrder.itemProblem class="form-control input-sm"/></td>
     <td><select
       class="form-control input-sm"
